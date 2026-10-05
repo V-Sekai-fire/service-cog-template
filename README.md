@@ -1,41 +1,19 @@
-# cog-generic-template
+# service-cog-template
 
-A serverless deployment of the state-of-the-art Template Model on Replicate.
+A blank model-serving template with empty prediction and training entry points, packaged for the `cog` container tool.
 
-## Overview
+## What it is for
 
-This repository contains the code necessary to deploy the Template Model as a serverless endpoint on Replicate.
+It is the starting point for a new served model: fill in the predictor and the trainer with a model's setup, inputs and outputs, then build and publish the container.
 
-## How to Use Custom Models
+## Building and running
 
-Customizing the deployment with your own model weights is simple:
-
-1. Add your model weights file to the root of this repository.
-2. Update the model initialization in [predict.py](predict.py). For example:
-
-   ```python
-   # Change this line in predict.py
-   self.model = models.get("generic_template_model", checkpoint_path="your-custom-model.pth", num_classes=17)
-   ```
-
-3. Follow the [Replicate deployment guide](https://replicate.com/docs/guides/deploy-a-custom-model) to publish your model.
-
-## How to use with API
-
-Learn more about the available API endpoints from the [Replicate API Documentation](https://replicate.com/hardikdava/rf-detr/api).
-
-## Local Development and Testing
-
-To test the model locally before deployment:
-
-```bash
-# Install cog if you haven't already
-pip install cog
-
-# Run a prediction with a local image
-cog predict -i image=@/path/to/your/image.jpg
+```sh
+cog predict
 ```
 
-## License
+`cog predict` builds the container and runs the predictor; `cog train` runs the trainer.
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/V-Sekai-fire/cog-template/blob/main/LICENSE) file for details.
+## Licence
+
+MIT. See [LICENSE](LICENSE).
